@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--CSS BOOSTRAP-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+	    <meta charset="utf-8">
+	<!--CSS BOOSTRAP-->
+	<title>Home</title>
+	<script type="text/javascript">
+		function caractesEspeciales(e){
+		    var key = e.charCode;
+		    console.log(key);
+		    return key >= 48 && key <= 57 || key >= 45 && key <= 46 ||   key >= 65 && key <= 90 || key == 95 || key >= 97 && key <= 122 || key == 64;
+		}
+		function soloNumeros(e){
+		    var key = e.charCode;
+		    console.log(key);
+		    return key >= 48 && key <= 57 || key==45;
+		}
+		function soloLetras(e) {
+		    key = e.keyCode || e.which;
+		    tecla = String.fromCharCode(key).toLowerCase();
+		    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+		    especiales = [8, 37, 39, 46];
+
+		    tecla_especial = false
+		    for(var i in especiales) {
+		        if(key == especiales[i]) {
+		            tecla_especial = true;
+		            break;
+		        }
+		    }
+
+		    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+		        return false;
+		}
+	</script>
+</head>
+<body class="bg-secondary">
+
+		<!-- Image and text -->
+	<nav class="navbar navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">
+	    <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+	    CRUD PHP + MySQL
+	  </a>
+	</nav>
+
+	<div class="container p-4 pt-0 mt-5 rounded bg-dark">
+		
+		<form method="post" action="php/registro.php" class="mx-5">
+			
+				<div class="row p-3">
+					<div class="col-1">
+						<a href="index.html" class="btn btn-dark ">
+				          <span class="glyphicon glyphicon-chevron-left"></span> INICIO
+				        </a>
+					</div>
+					<div class="col-11">
+						<h2 class="text-light text-center">Registro de usuario</h2>
+					</div>
+				</div>
+
+				<!-- ROW NOMBRES Y APELLIDOS-->
+
+				<div class="row">
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="nombre" >Nombres</label></div>
+					<div class="col-4">
+							<input type="text" onkeypress="return soloLetras(event)" name="nombres" id="nombres" class="form-control" placeholder="Escribe tu(s) nombre(s)">    								
+					</div>
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="apellidos">Apellidos</label></div>
+					<div class="col-4">
+							<input type="text" onkeypress="return soloLetras(event)" name="apellidos" id="apellidos" class="form-control"   placeholder="Escribe tu(s) apellido(s)"> 					
+					</div>							
+				</div>	
+
+				<!-- ROW EMAIL Y CONTRASEÑA-->
+
+				<div class="row mt-5">
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="programa">Programa academico</label></div>
+					<div class="col-4">
+							<input type="text" onkeypress="return soloLetras(event)" name="programa" id="programa" class="form-control" aria-describedby="emailHelp" placeholder="Escribe tu carrera" required="true">	
+					</div>
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="semestre">Periodo de inicio</label></div>
+					<div class="col-4">
+							<input type="text" onkeypress="return soloNumeros(event)" maxlength="6" name="periodo" id="periodo" class="form-control"   placeholder="2018-2" required="true"> 					
+					</div>							
+				</div>
+				<div class="row mt-5">
+					<div class="col-4 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="email">Correo electronico</label></div>
+					<div class="col-8">
+							<input type="email" onkeypress="return caractesEspeciales(event)" name="email" id="email" class="form-control"  aria-describedby="emailHelp" placeholder="Escribe tu correo electronico" required="true">    								
+					</div>
+				</div>
+										
+				<div class="row mt-5">
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="password">Contraseña</label></div>
+					<div class="col-4">
+							<input type="password" pattern=".{6,}"  name="password1" id="password1" class="form-control"  placeholder="Contraseña (minimo 6 caracteres)" required="true">    								
+					</div>
+					<div class="col-2 text-center text-light bg-secondary my-auto p-1 rounded"> <label for="password">Repetir contraseña</label></div>
+					<div class="col-4">
+							<input type="password" pattern=".{6,}" minlength="6" name="contra2" id="contra2" class="form-control"  placeholder="Repetir contraseña (minimo 6 caracteres)" required="true">    								
+					</div>						
+				</div>							
+				
+				<div class="row p-3 px-5 mt-5">
+					<div class="col-12">
+						<button type="submit" class="btn btn-danger btn-block">Registrar</button>
+					</div>
+				</div>
+				
+			
+		</form>				
+	
+	</div>
+
+
+
+
+<!--JS BOOSTRAP-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--JS BOOSTRAP-->
+
+</body>
+</html>
